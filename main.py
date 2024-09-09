@@ -96,6 +96,17 @@ def main():
             cell_name = f'{chr(65 + row)}{col + 1}' 
             ss_calc_obj.cell_expressions[cell_name] = input_data[input_idx]
             input_idx += 1
+        
+        '''
+        cell_expressions = {
+                "A1": "A2"
+                "A2": "4 5 *"
+                "A3": "A1"
+                "B1": "A1 B2 / 2 +"
+                "B2": "3"/ "B2"
+                "B3": "39 B1 B2 * /"
+        }
+        '''
 
     # Compute all the cell values
     evaluated_values = ss_calc_obj.compute_all_cell_values(no_of_cols, no_of_rows)
@@ -109,3 +120,20 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+'''
+Time Complexity:
+Avg Length of Cell Expression: L_Avg
+Total cells = N*M 
+Time to evaluate single cell using RPN = O(L_Avg)
+
+O(N*M * O(1))
+O(N*M * O(L_Avg))
+
+Space Complexity:
+Size of expression -> O(L_Avg)
+O(N*M) => cell_expressions -> to store all cell data
+
+Worst case: O(N*M*<L_Avg>)
+'''
